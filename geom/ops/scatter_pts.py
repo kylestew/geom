@@ -5,7 +5,7 @@ from geom.ops.bounds import bounds
 from geom.ops.area import area
 from geom.ops.point_inside import point_inside
 
-from geom.ops.internal.poison import PoissonDisc
+from geom.internal.poison import PoissonDisc
 
 from random import uniform
 import math
