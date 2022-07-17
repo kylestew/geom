@@ -1,3 +1,4 @@
+from geom.ops.vertices import vertices
 from math import dist
 from numpy import array
 from numpy import append
@@ -20,7 +21,8 @@ def interpolate_pt(a, b, t):
     return (B * t + (1 - t) * A).tolist()
 
 
-def resample(pts, dist=None, num=None, closed=True):
+def resample(data, dist=None, num=None, closed=False):
+    pts = vertices(data)
     sampler = Sampler(pts, closed=closed)
     if dist:
         return sampler.sample_uniform(dist)
@@ -31,6 +33,10 @@ def resample(pts, dist=None, num=None, closed=True):
 
 class Sampler:
     def __init__(self, pts, closed=False):
+        """
+        Note: closed means that it loops the points attaching last to first
+        In the case of a line, you would want this to be false
+        """
         if closed:
             self._pts = append(pts, [pts[0]], axis=0)
         else:
@@ -55,7 +61,7 @@ class Sampler:
         idx = self._index
         return idx[-1] if len(idx) > 0 else 0
 
-    def sample_uniform(self, dist, includeLast=False):
+    def sample_uniform(self, dist):
         idx = self._index
         pts = self._pts
         total = self.total_length()
@@ -65,22 +71,20 @@ class Sampler:
         result = []
         t = 0  # parameterized [0...1]
         i = 1
-        while t < 1:
+        while t <= 1.05:
             ct = t * total
-            while ct >= idx[i] and i < n:
+            while ct >= idx[i] and i < n - 1:
                 i += 1
             if i >= n:
                 break
             p = idx[i - 1]
 
             c = interpolate_pt(pts[i - 1], pts[i], (ct - p) / (idx[i] - p))
-            # print("interpolate", pts[i - 1], pts[i], (ct - p) / (idx[i] - p), c)
             result.append(c)
 
             t += delta
 
         return result
-        # return result[:-1]
 
-    def sample_fixed_num(self, num, includeLast=False):
-        return self.sample_uniform(self.total_length() / num, includeLast)
+    def sample_fixed_num(self, num):
+        return self.sample_uniform(self.total_length() / (num - 1))

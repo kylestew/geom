@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class PCLike:
+class APC:
     def __init__(self, pts):
         if type(pts).__module__ == np.__name__:
             self.points = pts
@@ -10,3 +10,6 @@ class PCLike:
 
         assert self.points.ndim == 2, "Must be a 2d array"
         assert self.points.shape[1] == 2, "Array must contain [x, y] pairs"
+
+    def __str__(self):
+        return "APC({0})".format(self.points)
