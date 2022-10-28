@@ -1,7 +1,6 @@
 import numpy as np
 from geom.data.polygon import Polygon
 from scipy.spatial.distance import euclidean
-from nil.nphacks import pair_bond
 
 
 class Triangle(Polygon):
@@ -26,7 +25,15 @@ class Triangle(Polygon):
         # pair points, map to distances, and find index of longes distance
         largest_idx = np.argmax(
             np.array(
-                [euclidean(a, b) for [a, b] in list(pair_bond(self.points))]
+                [
+                    euclidean(a, b)
+                    for [a, b] in list(
+                        np.stack(
+                            (self.points, np.roll(self.points, -1, axis=0)),
+                            axis=1,
+                        )
+                    )
+                ]
             )
         )
 

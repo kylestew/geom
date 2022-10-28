@@ -6,6 +6,10 @@ from numpy.linalg import norm
 
 class Line(APC):
     def __init__(self, a, b):
+        """
+        a: (x, y) start of line
+        b: (x, y) end of line
+        """
         super().__init__([a, b])
 
     def __str__(self):
@@ -14,6 +18,10 @@ class Line(APC):
     # vector, position, and length to create line
     @classmethod
     def from_vector(cls, v, origin):
+        """
+        v: (x, y) directional vector
+        origin: (x, y) origin point of vector
+        """
         a = origin
         b = origin + v
         return cls(a, b)

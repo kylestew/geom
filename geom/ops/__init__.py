@@ -18,3 +18,5 @@ from .split_at import split_at
 from .triangulate import triangulate
 
 from .vertices import vertices
+
+from .intersects import intersects
