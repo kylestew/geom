@@ -1,7 +1,8 @@
 from geom.ops.vertices import vertices
-from math import dist
+from math import dist, pi
 from numpy import array
 from numpy import append
+from geom.data.circle import Circle
 
 
 def interpolate_pt(a, b, t):
@@ -21,8 +22,17 @@ def interpolate_pt(a, b, t):
     return (B * t + (1 - t) * A).tolist()
 
 
-def resample(data, dist=None, num=None, closed=False):
-    pts = vertices(data)
+def resample(dat, dist=None, num=None, closed=False):
+    if isinstance(dat, Circle):
+        if dist:
+            circ = 2 * pi * dat.r
+            pt_count = int(circ / dist)
+            return vertices(dat, pt_count)
+        elif num:
+            return vertices(dat, num)
+        return vertices(dat)
+
+    pts = vertices(dat)
     sampler = Sampler(pts, closed=closed)
     if dist:
         return sampler.sample_uniform(dist)
