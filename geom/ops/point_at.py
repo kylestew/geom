@@ -1,4 +1,5 @@
 from geom.data.line import Line
+from geom.data.cubic import Cubic
 from numpy import array
 
 
@@ -11,6 +12,9 @@ def point_at(dat, t):
         x = x0 + (x1 - x0) * t
         y = y0 + (y1 - y0) * t
         return array((x, y))
+
+    if isinstance(dat, Cubic):
+        return dat._curve().evaluate(t)
 
     return None
 

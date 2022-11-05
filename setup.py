@@ -8,5 +8,11 @@ setup(
     packages=find_packages(),
     description="A geometry data and functions library",
     long_description=open("README.md").read(),
-    install_requires=["scipy", "numpy", "shapely", "iteration_utilities"],
+    install_requires=[
+        "scipy",
+        "numpy",
+        "shapely",
+        "iteration_utilities",
+        "bezier",
+    ],
 )

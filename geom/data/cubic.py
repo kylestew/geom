@@ -1,5 +1,5 @@
-from geom.api.shape import APC
-from .internal.resample import resample
+from geom.api.apc import APC
+
 import numpy as np
 import bezier
 
@@ -25,16 +25,3 @@ class Cubic(APC):
 
     def length(self):
         return self._curve().length
-
-    def point_at(self, t):
-        return self._curve().evaluate(t)
-
-    def vertices(self):
-        # sample cubic at pts
-        pass
-        # return self.points
-
-    # === Cairo ===
-    def draw(self, ctx, fill=False):
-        [a, b, c, d] = self.points
-        ctx.curve(a, b, c, d)
