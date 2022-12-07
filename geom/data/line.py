@@ -1,4 +1,3 @@
-#%%
 from geom.api.apc import APC
 
 from numpy import array
@@ -15,6 +14,9 @@ class Line(APC):
 
     def __str__(self):
         return "Line({0}, {1})".format(self.points[0], self.points[1])
+
+    def _repr_pretty_(self, p, cycle):
+        p.text(str(self) if not cycle else "...")
 
     # vector, position, and length to create line
     @classmethod
