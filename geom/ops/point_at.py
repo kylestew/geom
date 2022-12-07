@@ -8,10 +8,7 @@ def point_at(dat, t):
     ???
     """
     if isinstance(dat, Line):
-        x0, y0, x1, y1 = dat.xys()
-        x = x0 + (x1 - x0) * t
-        y = y0 + (y1 - y0) * t
-        return array((x, y))
+        return dat.point_at(t)
 
     if isinstance(dat, Cubic):
         return dat._curve().evaluate(t)

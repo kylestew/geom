@@ -1,3 +1,4 @@
+#%%
 from geom.api.apc import APC
 
 from numpy import array
@@ -5,7 +6,7 @@ from numpy.linalg import norm
 
 
 class Line(APC):
-    def __init__(self, a, b):
+    def __init__(self, a=[0, 0], b=[1, 0]):
         """
         a: (x, y) start of line
         b: (x, y) end of line
@@ -36,14 +37,24 @@ class Line(APC):
     def length(self):
         return norm(self.points)
 
-    def as_vector(self):
-        x0, y0, x1, y1 = self._xys()
+    # treat Line as a vector
+    def origin(self):
+        return self.points[0]
+
+    def direction(self):
+        x0, y0, x1, y1 = self.xys()
         i = x1 - x0
         j = y1 - y0
         return array((i, j))
 
     def unit_vector(self):
-        return self.as_vector() / self.length()
+        return self.direction() / self.length()
+
+    def _point_at(self, t):
+        x0, y0, x1, y1 = self.xys()
+        x = x0 + (x1 - x0) * t
+        y = y0 + (y1 - y0) * t
+        return array((x, y))
 
     def shatter(self, ts):
         """
@@ -53,7 +64,7 @@ class Line(APC):
         p_start, p_last = self.points
         segments = []
         for t in ts:
-            p_end = self.point_at(t)
+            p_end = self._point_at(t)
             segments.append(Line(p_start, p_end))
             p_start = p_end
         segments.append(Line(p_start, p_last))
