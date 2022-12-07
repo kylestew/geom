@@ -3,7 +3,7 @@ from geom.data.circle import Circle
 from numpy import array, linspace, column_stack, cos, sin
 from math import pi
 
-DEFAULT_SAMPLES = 12
+DEFAULT_SAMPLES = 32
 
 
 def vertices(dat, n=DEFAULT_SAMPLES):
