@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="geom",
-    version="0.0.8",
+    version="0.0.9",
     author="Kyle Stewart",
     author_email="kylestew@gmail.com",
     packages=find_packages(),

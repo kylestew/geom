@@ -14,7 +14,7 @@ def area(dat):
         return dat.w * dat.h
 
     elif isinstance(dat, Circle):
-        return dat.r * 2 * pi
+        return pi * dat.r * dat.r
 
     elif isinstance(dat, Polygon):
         raise Exception("NOT IMPLEMENTED")
