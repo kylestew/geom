@@ -6,3 +6,4 @@ from .triangle import Triangle
 from .points import Points
 from .line import Line
 from .cubic import Cubic
+from .grid import Grid
