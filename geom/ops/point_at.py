@@ -8,7 +8,7 @@ def point_at(dat, t):
     ???
     """
     if isinstance(dat, Line):
-        return dat.point_at(t)
+        return dat._point_at(t)
 
     if isinstance(dat, Cubic):
         return dat._curve().evaluate(t)

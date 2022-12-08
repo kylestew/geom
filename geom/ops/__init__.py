@@ -9,7 +9,8 @@ from .point_at import point_at
 from .point_inside import point_inside
 from .resample import resample
 
-# rotate
+from .rotate import rotate
+
 from .scatter_pts import scatter_pts
 from .scale import scale
 from .split_at import split_at
