@@ -3,6 +3,8 @@ from geom.data.circle import Circle
 from geom.data.polygon import Polygon
 from math import pi
 
+from shapely.geometry import Polygon as SPoly
+
 
 def area(dat):
     """
@@ -16,8 +18,8 @@ def area(dat):
     elif isinstance(dat, Circle):
         return pi * dat.r * dat.r
 
-    elif isinstance(dat, Polygon):
-        raise Exception("NOT IMPLEMENTED")
+    # elif isinstance(dat, Polygon):
+    #     raise Exception("NOT IMPLEMENTED")
 
     else:
-        return 0
+        return SPoly(dat.points).area

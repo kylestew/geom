@@ -13,3 +13,6 @@ class APC:
 
     def __str__(self):
         return "APC({0})".format(self.points)
+
+    def _repr_pretty_(self, p, cycle):
+        p.text(str(self) if not cycle else "...")

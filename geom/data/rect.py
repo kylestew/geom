@@ -4,7 +4,7 @@ from numpy import array, hsplit
 
 
 class Rect(Polygon):
-    def __init__(self, pos, size):
+    def __init__(self, pos=[0, 0], size=[1, 1]):
         """
         pos: (x, y) position
         size: (width, height)
