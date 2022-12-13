@@ -1,5 +1,6 @@
 from .rect import Rect
 from .circle import Circle
+from .arc import Arc
 from .ellipse import Ellipse
 from .polygon import Polygon
 from .triangle import Triangle
