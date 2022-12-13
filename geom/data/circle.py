@@ -12,12 +12,5 @@ class Circle:
             self.origin[0], self.origin[1], self.r
         )
 
-    # def translate(self, tx, ty):
-    #     pass
-
-    # def rotate(self, rad):
-    #     (
-    #         x,
-    #         y,
-    #     ) = self.origin
-    #     return Circle(x, y, self.r, self.theta + rad)
+    def _repr_pretty_(self, p, cycle):
+        p.text(str(self) if not cycle else "...")
