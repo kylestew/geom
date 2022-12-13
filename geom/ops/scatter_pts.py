@@ -19,7 +19,7 @@ def random_point_in(bounds):
         yield [x, y]
 
 
-def scatter_pts(dat, density=0.9, poisson=False):
+def scatter_pts(dat, density=0.8, poisson=False):
     """
     Uses Poisson sampling!
 
@@ -41,7 +41,7 @@ def scatter_pts(dat, density=0.9, poisson=False):
         return []
 
     # arbitrary "dense" number, idk!
-    num = int(math.pow(area(dat) * density * 10, 2))
+    num = int(math.pow(area(dat) * density * 20, 3))
 
     rgen = random_point_in(b)
     out = []
