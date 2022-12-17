@@ -38,4 +38,4 @@ def uniform_point_in(dat):
     x, y, w, h = bounds(dat)
     x = uniform(x, x + w, 1)
     y = uniform(y, y + h, 1)
-    return list(append(x, y))
+    return tuple(append(x, y))
