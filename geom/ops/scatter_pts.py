@@ -1,6 +1,3 @@
-from geom.data.rect import Rect
-from geom.data.points import Points
-
 from geom.ops.bounds import bounds
 from geom.ops.area import area
 from geom.ops.point_inside import point_inside
@@ -41,7 +38,8 @@ def scatter_pts(dat, density=0.8, poisson=False):
         return []
 
     # arbitrary "dense" number, idk!
-    num = int(math.pow(area(dat) * density * 20, 3))
+    # grows exponentially with area - careful!
+    num = int(area(dat) * math.sqrt(density) * 1000)
 
     rgen = random_point_in(b)
     out = []
