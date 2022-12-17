@@ -57,8 +57,10 @@ class Rect(Polygon):
 
         return cls(pos, size)
 
-    # def translate(self, tx, ty):
-    #     return Polygon(translate_points(self.vertices(), tx, ty))
-
-    # def rotate(self, rad):
-    #     return Polygon(rotate_points(self.vertices(), rad))
+    # === Specialized ===
+    def inset_by(self, amt):
+        x = self.x + amt
+        y = self.y + amt
+        w = self.w - (amt * 2)
+        h = self.h - (amt * 2)
+        return Rect(pos=(x, y), size=(w, h))
