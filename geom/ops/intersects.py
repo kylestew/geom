@@ -24,16 +24,12 @@ def intersects(dat, other):
 
     if isinstance(dat, Line):
         a = LineString(dat.points)
-    elif isinstance(dat, Circle) or isinstance(dat, Rect):
-        a = Polygon(vertices(dat))
     else:
-        raise Exception("NOT IMPLEMENTED")
+        a = Polygon(vertices(dat))
 
     if isinstance(other, Line):
         b = LineString(other.points)
-    elif isinstance(other, Circle) or isinstance(other, Rect):
-        b = Polygon(vertices(other))
     else:
-        raise Exception("NOT IMPLEMENTED")
+        b = Polygon(vertices(other))
 
     return a.intersects(b)

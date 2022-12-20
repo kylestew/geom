@@ -1,6 +1,11 @@
+#%%
+from geom.data.polygon import Polygon
 from geom.data.line import Line
+from geom.data.rect import Rect
+from geom.data.circle import Circle
 
 from geom.ops.centroid import centroid
+from geom.ops.vertices import vertices
 
 from math import cos, sin
 
@@ -24,13 +29,11 @@ def rotate(dat, theta, center=None):
     (center) - center of rotation (uses centroid if none specified)
     """
 
-    # if isinstance(dat, Circle):
-    #     return Circle(dat.origin, dat.r, dat.theta + theta)
+    if isinstance(dat, Circle):
+        return Circle(dat.origin, dat.r, dat.theta + theta)
 
-    # if isinstance(dat, Rect):
-    #     center = centroid(dat)
-    #     scaled_size = (dat.size[0] * sx, dat.size[1] * sy)
-    #     return Rect.from_center(center, scaled_size)
+    if isinstance(dat, Rect):
+        return Polygon(rotate_points(vertices(dat), theta))
 
     if center == None:
         center = centroid(dat)
@@ -59,5 +62,4 @@ def rotate(dat, theta, center=None):
         p0, p1 = list(line.coords)
         return Line(p0, p1)
 
-    # else:
-    # return Polygon(_scale_points(vertices(dat), sx, sy))
+    return None
