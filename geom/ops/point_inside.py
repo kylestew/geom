@@ -2,7 +2,8 @@ from geom.data.rect import Rect
 from geom.data.circle import Circle
 from geom.data.points import Points
 from geom.data.polygon import Polygon
-from .vertices import vertices
+
+from geom.ops.vertices import vertices
 
 from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon as SPoly
