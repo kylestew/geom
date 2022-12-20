@@ -1,4 +1,3 @@
-#%%
 from geom.ops.vertices import vertices
 
 from shapely.geometry import Polygon

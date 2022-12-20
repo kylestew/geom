@@ -19,9 +19,12 @@ def _scale_points(pts, xscale, yscale):
 def scale(dat, scale):
     """
     Scales given shape (origin of scale is center)
-    (sx, sy) - scale multiplier for axis, 1.0 being no scale
+    scale // (sx, sy) - scale multiplier for axis, 1.0 being no scale
     """
-    (sx, sy) = scale
+    if hasattr(scale, "__len__"):
+        (sx, sy) = scale
+    else:
+        sx = sy = scale
 
     if isinstance(dat, Rect):
         center = centroid(dat)
@@ -29,7 +32,10 @@ def scale(dat, scale):
         return Rect.from_center(center, scaled_size)
 
     elif isinstance(dat, Circle):
-        raise Exception("NOT IMPLEMENTED")
+        if sx != sy:
+            raise Exception("NON-UNIFORM SCALE NOT IMPLEMENTED")
+        else:
+            return Circle(dat.origin, dat.r * sx)
 
     elif isinstance(dat, Line):
         raise Exception("NOT IMPLEMENTED")
