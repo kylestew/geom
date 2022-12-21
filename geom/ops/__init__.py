@@ -15,7 +15,7 @@ from .scatter_pts import scatter_pts
 from .scale import scale
 from .split_at import split_at
 
-# translate
+from .translate import translate
 
 from .triangulate import triangulate
 

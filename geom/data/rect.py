@@ -64,3 +64,14 @@ class Rect(Polygon):
         w = self.w - (amt * 2)
         h = self.h - (amt * 2)
         return Rect(pos=(x, y), size=(w, h))
+
+    def offset_by(self, offset):
+        """
+        Offset position of rect
+
+        - offset: (dx, dy)
+        """
+        dx, dy = offset
+        x = self.x + dx
+        y = self.y + dy
+        return Rect(pos=(x, y), size=(self.w, self.h))

@@ -19,5 +19,8 @@ class Circle:
     def with_origin(self, origin):
         return Circle(origin, self.r, self.theta)
 
+    def offset_by(self, offset):
+        return self.with_origin(self.origin + offset)
+
     def with_radius(self, radius):
         return Circle(self.origin, radius, self.theta)
