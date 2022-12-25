@@ -4,5 +4,14 @@
 
 GEOM is split into multiple sub-packages
 
-+ `geom.data` - a collection of data forward geometry shapes (rectangle, circle, polygon)
-+ `geom.ops` - functions that take data (from geom.shapes) and perform geometric related algorithms on them (i.e. resample, find bounds, etc)
+### DAT: `geom.data`
+
+> A collection of data forward geometry shapes (rectangle, circle, polygon)
+
+### OPS: `geom.ops`
+
+> Functions that take data (from `geom.data`) and perform geometric related algorithms on them (i.e. resample, find bounds, etc)
+
+### MATH: `geom.math`
+
+> Mathmatical helper functions
