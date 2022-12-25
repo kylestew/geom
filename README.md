@@ -15,3 +15,10 @@ GEOM is split into multiple sub-packages
 ### MATH: `geom.math`
 
 > Mathmatical helper functions
+
+
+## Testing
+
+Using `pytest`
+
+    $ pytest

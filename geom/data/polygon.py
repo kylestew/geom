@@ -25,9 +25,3 @@ class Polygon(APC):
             Polygon((a, b, d)),
             Polygon((c, d, b)),
         ]
-
-    # def translate(self, tx, ty):
-    #     return Polygon(translate_points(self.vertices(), tx, ty))
-
-    # def rotate(self, rad):
-    #     return Polygon(rotate_points(self.vertices(), rad))
