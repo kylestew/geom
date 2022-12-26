@@ -13,7 +13,7 @@ from .resample import resample
 
 from .rotate import rotate
 
-from .scatter_pts import scatter_pts
+from .scatter_pts import scatter_pts, RandomSampling
 from .scale import scale
 from .split_at import split_at
 

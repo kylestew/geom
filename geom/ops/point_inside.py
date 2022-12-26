@@ -34,7 +34,7 @@ def point_inside(dat, pt):
     elif isinstance(dat, Circle):
         # skip sqrt for speed
         # dist squared <= radius squared
-        x1, y1 = dat.origin
+        x1, y1 = dat.center
         x2, y2 = pt
         return (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) <= dat.r * dat.r
 
