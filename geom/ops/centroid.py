@@ -25,7 +25,7 @@ def centroid(dat):
         return point_at(dat, 0.5)
 
     elif isinstance(dat, Polygon) or isinstance(dat, Triangle):
-        return SPoly(vertices(dat)).centroid
+        return SPoly(vertices(dat)).centroid.coords[0]
 
     else:
         """

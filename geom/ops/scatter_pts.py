@@ -16,6 +16,7 @@ from geom.data import (
 )
 
 from geom.ops.bounds import bounds
+from geom.ops.centroid import centroid
 from geom.ops.point_inside import point_inside
 
 from ._lib.guards import throws_impossible_for
@@ -56,11 +57,11 @@ def scatter_pts(
 
     # random function that finds a point withing the rough bounds of the shape
     if sampling == RandomSampling.UNIFORM:
-        rgen = _uniform_point_in(bnds)
+        rgen = _uniform_point_in(dat)
     elif sampling == RandomSampling.GAUSSIAN:
-        rgen = _gauss_point_in(bnds, sigma)
+        rgen = _gauss_point_in(dat, sigma)
     else:
-        rgen = _random_point_in(bnds)
+        rgen = _random_point_in(dat)
 
     # invoke random FN, throwing away points outside exact shape boundaries
     out = []
@@ -74,8 +75,8 @@ def scatter_pts(
     return out
 
 
-def _random_point_in(bounds):
-    x, y, w, h = bounds
+def _random_point_in(dat):
+    x, y, w, h = bounds(dat)
     while True:
         # [0, 1]
         rx = random.random() * w + x
@@ -83,23 +84,22 @@ def _random_point_in(bounds):
         yield [rx, ry]
 
 
-def _uniform_point_in(bounds):
-    x, y, w, h = bounds
+def _uniform_point_in(dat):
+    x, y, w, h = bounds(dat)
     while True:
         rx = random.uniform(x, x + w)
         ry = random.uniform(y, y + h)
         yield [rx, ry]
 
 
-def _gauss_point_in(bounds, sigma):
+def _gauss_point_in(dat, sigma):
     # NOTE: does not gaurantee inside bounds
-    x, y, w, h = bounds
-    xc = x + w / 2.0
-    yc = y + h / 2.0
+    cx, cy = centroid(dat)
+    _, _, w, h = bounds(dat)
 
     def throw():
-        rx = random.gauss(xc, sigma * w)
-        ry = random.gauss(yc, sigma * h)
+        rx = random.gauss(cx, sigma * w)
+        ry = random.gauss(cy, sigma * h)
         return [rx, ry]
 
     while True:

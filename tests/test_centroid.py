@@ -18,4 +18,4 @@ def test_centroid_rect():
 
 def test_centroid_poly():
     poly = dat.Polygon([[4, 5], [20, 25], [30, 6]])
-    assert_array_equal(centroid(poly).coords[0], [18, 12])
+    assert_array_equal(centroid(poly), [18, 12])
