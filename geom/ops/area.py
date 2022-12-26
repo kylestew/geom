@@ -35,5 +35,4 @@ def area(dat):
         return dat.w * dat.h
 
     else:
-        print(vertices(dat))
         return SPoly(vertices(dat)).area

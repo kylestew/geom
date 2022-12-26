@@ -29,7 +29,7 @@ class RandomSampling(Enum):
 
 # def gaussian_point_in(dat, sigma=0.5):
 def scatter_pts(
-    dat, num=12, seed=123, sampling=RandomSampling.RANDOM, sigma=0.5
+    dat, num=12, seed=None, sampling=RandomSampling.RANDOM, sigma=0.5
 ):
     """
     Scatters points in the bounds of a given GEO.DAT shape.
@@ -50,6 +50,8 @@ def scatter_pts(
     if bnds == None:
         raise Exception("Does not implement `bounds`")
 
+    if seed == None:
+        seed = random.random() * 1230129
     random.seed(seed)
 
     # random function that finds a point withing the rough bounds of the shape

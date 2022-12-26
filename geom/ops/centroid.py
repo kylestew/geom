@@ -1,9 +1,14 @@
 from geom.data.rect import Rect
 from geom.data.circle import Circle
 from geom.data.line import Line
-from numpy import array, sum
+from geom.data.polygon import Polygon
+from geom.data.triangle import Triangle
+
+from numpy import sum
 from geom.ops.point_at import point_at
 from geom.ops.vertices import vertices
+
+from shapely.geometry import Polygon as SPoly
 
 
 def centroid(dat):
@@ -14,10 +19,13 @@ def centroid(dat):
         return dat.x + dat.w / 2.0, dat.y + dat.h / 2.0
 
     elif isinstance(dat, Circle):
-        return dat.origin
+        return dat.center
 
     elif isinstance(dat, Line):
         return point_at(dat, 0.5)
+
+    elif isinstance(dat, Polygon) or isinstance(dat, Triangle):
+        return SPoly(vertices(dat)).centroid
 
     else:
         """
