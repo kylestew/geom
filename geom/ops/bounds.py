@@ -5,6 +5,7 @@ from geom.data.rect import Rect
 from geom.data.circle import Circle
 from geom.data.points import Points
 from geom.data.line import Line
+from geom.data.grid import Grid
 
 from geom.ops.vertices import vertices
 
@@ -19,6 +20,9 @@ def bounds(dat):
     """
     if isinstance(dat, Rect):
         return (dat.x, dat.y, dat.w, dat.h)
+
+    if isinstance(dat, Grid):
+        return (dat._x, dat._y, dat._w, dat._h)
 
     elif isinstance(dat, Circle):
         r = dat.r

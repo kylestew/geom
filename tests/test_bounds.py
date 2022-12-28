@@ -29,10 +29,11 @@ def test_bounds_circle():
 #     res = bounds(circ)
 #     assert res == [0, 0, 0, 0]
 
-# def test_bounds_grid():
-#     circ = dat.Circle((1, 1), r=1)
-#     res = bounds(circ)
-#     assert res == [0, 0, 0, 0]
+
+def test_bounds_grid():
+    grid = dat.Grid([1, 2], [3, 4], [12, 13])
+    res = bounds(grid)
+    np.testing.assert_array_equal(res, [1, 2, 3, 4])
 
 
 def test_bounds_line():
