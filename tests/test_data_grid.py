@@ -32,14 +32,28 @@ def test_grid_return_centers():
 
 
 def test_grid_map_fn():
-    grid = Grid(grid=[2, 2])
+    grid = Grid(pos=[1, 2], size=[3, 2], grid=[2, 2])
     vals = grid.map(lambda pt, sz: [pt, sz])
     assert_array_equal(
         vals,
         [
-            [[0.0, 0.0], [1, 1]],
-            [[1.0, 0.0], [1, 1]],
-            [[0.0, 1.0], [1, 1]],
-            [[1.0, 1.0], [1, 1]],
+            [[1.0, 2.0], [1.5, 1.0]],
+            [[2.5, 2.0], [1.5, 1.0]],
+            [[1.0, 3.0], [1.5, 1.0]],
+            [[2.5, 3.0], [1.5, 1.0]],
+        ],
+    )
+
+
+def test_grid_map_fn_from_centers():
+    grid = Grid(size=[2, 2], grid=[2, 2])
+    vals = grid.map(lambda pt, sz: [pt, sz], from_centers=True)
+    assert_array_equal(
+        vals,
+        [
+            [[0.5, 0.5], [1.0, 1.0]],
+            [[1.5, 0.5], [1.0, 1.0]],
+            [[0.5, 1.5], [1.0, 1.0]],
+            [[1.5, 1.5], [1.0, 1.0]],
         ],
     )

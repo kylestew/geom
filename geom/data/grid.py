@@ -63,7 +63,7 @@ class Grid(APC):
         # apply centering and offset to each pt
         return self.points + self.cell_size / 2
 
-    def map(self, fn, from_centers=True):
+    def map(self, fn, from_centers=False):
         """
         Execute a function for each point in the grid and return
         the results
