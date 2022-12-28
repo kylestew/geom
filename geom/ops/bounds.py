@@ -39,5 +39,4 @@ def bounds(dat):
         return [min_x, min_y, max_x - min_x, max_y - min_y]
 
     else:
-        print(vertices(dat))
         return Polygon(vertices(dat)).bounds
