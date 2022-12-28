@@ -38,6 +38,8 @@ class Grid(APC):
         self._row_count = rows
         self._col_count = cols
 
+        self.cell_count = len(pts)
+
         super().__init__(pts)
 
     def __str__(self):
@@ -68,7 +70,8 @@ class Grid(APC):
         Execute a function for each point in the grid and return
         the results
 
-        - fn: (point, cell_size) -> ()
+        - fn: (point, (idx, cell_width, cell_height, total_cell_count)) -> ()
         """
         pts = self.centers() if from_centers == True else self.points
-        return array([fn(pt, self.cell_size) for pt in pts])
+
+        return array([fn(idx, pt) for idx, pt in enumerate(pts)])

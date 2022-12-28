@@ -33,27 +33,32 @@ def test_grid_return_centers():
 
 def test_grid_map_fn():
     grid = Grid(pos=[1, 2], size=[3, 2], grid=[2, 2])
-    vals = grid.map(lambda pt, sz: [pt, sz])
+
+    assert grid.cell_count == 4
+    assert_array_equal(grid.cell_size, [1.5, 1.0])
+
+    vals = grid.map(lambda idx, pt: [idx, pt])
     assert_array_equal(
         vals,
         [
-            [[1.0, 2.0], [1.5, 1.0]],
-            [[2.5, 2.0], [1.5, 1.0]],
-            [[1.0, 3.0], [1.5, 1.0]],
-            [[2.5, 3.0], [1.5, 1.0]],
+            # idx, pt
+            [0, np.array([1.0, 2.0])],
+            [1, np.array([2.5, 2.0])],
+            [2, np.array([1.0, 3.0])],
+            [3, np.array([2.5, 3.0])],
         ],
     )
 
 
-def test_grid_map_fn_from_centers():
-    grid = Grid(size=[2, 2], grid=[2, 2])
-    vals = grid.map(lambda pt, sz: [pt, sz], from_centers=True)
-    assert_array_equal(
-        vals,
-        [
-            [[0.5, 0.5], [1.0, 1.0]],
-            [[1.5, 0.5], [1.0, 1.0]],
-            [[0.5, 1.5], [1.0, 1.0]],
-            [[1.5, 1.5], [1.0, 1.0]],
-        ],
-    )
+# def test_grid_map_fn_from_centers():
+#     grid = Grid(size=[2, 2], grid=[2, 2])
+#     vals = grid.map(lambda pt, sz: [pt, sz], from_centers=True)
+#     assert_array_equal(
+#         vals,
+#         [
+#             [[0.5, 0.5], [1.0, 1.0]],
+#             [[1.5, 0.5], [1.0, 1.0]],
+#             [[0.5, 1.5], [1.0, 1.0]],
+#             [[1.5, 1.5], [1.0, 1.0]],
+#         ],
+#     )
