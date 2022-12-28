@@ -35,8 +35,8 @@ class Grid(APC):
         self._y = y
         self._w = w
         self._h = h
-        self._row_count = rows
-        self._col_count = cols
+        self.rows = rows
+        self.cols = cols
 
         self.cell_count = len(pts)
 
@@ -50,8 +50,8 @@ class Grid(APC):
                 self._y,
                 self._w,
                 self._h,
-                self._row_count,
-                self._col_count,
+                self.rows,
+                self.cols,
                 self.cell_size,
             )
         )
@@ -68,10 +68,15 @@ class Grid(APC):
     def map(self, fn, from_centers=False):
         """
         Execute a function for each point in the grid and return
-        the results
+        the results as an array.
 
-        - fn: (point, (idx, cell_width, cell_height, total_cell_count)) -> ()
+        - fn: (point, position) -> ()
+            - point: (x, y)
+            - position: (row, column)
         """
         pts = self.centers() if from_centers == True else self.points
 
-        return array([fn(idx, pt) for idx, pt in enumerate(pts)])
+        cols = self.cols
+        return array(
+            [fn(pt, (idx // cols, idx % cols)) for idx, pt in enumerate(pts)]
+        )

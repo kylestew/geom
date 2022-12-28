@@ -32,20 +32,24 @@ def test_grid_return_centers():
 
 
 def test_grid_map_fn():
-    grid = Grid(pos=[1, 2], size=[3, 2], grid=[2, 2])
+    grid = Grid(pos=[1, 2], size=[3, 2], grid=[2, 3])
 
-    assert grid.cell_count == 4
-    assert_array_equal(grid.cell_size, [1.5, 1.0])
+    assert grid.rows == 2
+    assert grid.cols == 3
+    assert grid.cell_count == 6
+    assert_array_equal(grid.cell_size, [1.0, 1.0])
 
-    vals = grid.map(lambda idx, pt: [idx, pt])
+    vals = grid.map(lambda pt, pos: [pt[0], pt[1], pos[0], pos[1]])
     assert_array_equal(
         vals,
         [
-            # idx, pt
-            [0, np.array([1.0, 2.0])],
-            [1, np.array([2.5, 2.0])],
-            [2, np.array([1.0, 3.0])],
-            [3, np.array([2.5, 3.0])],
+            # x, y, row, column
+            [1.0, 2.0, 0, 0],
+            [2.0, 2.0, 0, 1],
+            [3.0, 2.0, 0, 2],
+            [1.0, 3.0, 1, 0],
+            [2.0, 3.0, 1, 1],
+            [3.0, 3.0, 1, 2],
         ],
     )
 
