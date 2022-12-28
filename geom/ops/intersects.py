@@ -16,9 +16,9 @@ def intersects(dat, other):
         # simple circle-circle intersection
         from math import dist
 
-        p1 = dat.origin
+        p1 = dat.center
         r1 = dat.r
-        p2 = other.origin
+        p2 = other.center
         r2 = other.r
         return dist(p1, p2) < (r1 + r2)
 

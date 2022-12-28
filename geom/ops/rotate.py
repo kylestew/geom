@@ -30,7 +30,7 @@ def rotate(dat, theta, center=None):
     """
 
     if isinstance(dat, Circle):
-        return Circle(dat.origin, dat.r, dat.theta + theta)
+        return Circle(dat.center, dat.r, dat.theta + theta)
 
     if isinstance(dat, Rect):
         return Polygon(rotate_points(vertices(dat), theta))

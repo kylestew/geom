@@ -14,7 +14,7 @@ def vertices(dat, n=DEFAULT_SAMPLES):
 
     elif isinstance(dat, Circle):
         a = linspace(0, pi * 2, n + 1) + dat.theta
-        circ = dat.origin + column_stack((cos(a), sin(a))) * dat.r
+        circ = dat.center + column_stack((cos(a), sin(a))) * dat.r
         return circ[:-1]
 
     elif hasattr(dat, "points") == True:
