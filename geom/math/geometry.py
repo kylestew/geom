@@ -1,6 +1,10 @@
 import numpy as np
 
 
+def angle_to_unit_vector(theta):
+    return make_normal((np.cos(theta), np.sin(theta)))
+
+
 def cart2pol(x, y):
     rho = np.sqrt(x**2 + y**2)
     phi = np.arctan2(y, x)
