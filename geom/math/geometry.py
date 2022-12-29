@@ -2,7 +2,7 @@ import numpy as np
 
 
 def angle_to_unit_vector(theta):
-    return make_normal((np.cos(theta), np.sin(theta)))
+    return make_normal(np.append(np.cos(theta), np.sin(theta)))
 
 
 def cart2pol(x, y):
@@ -11,7 +11,7 @@ def cart2pol(x, y):
     return (rho, phi)
 
 
-def make_normal(p, orig=[0, 0]):
+def make_normal(p, orig=np.array([0, 0])):
     v = np.array(p) - orig
     return v / np.linalg.norm(v)
 

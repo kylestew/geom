@@ -38,6 +38,9 @@ class Grid(APC):
         self.rows = rows
         self.cols = cols
 
+        self.xs = xs
+        self.ys = ys
+
         self.cell_count = len(pts)
 
         super().__init__(pts)
