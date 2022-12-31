@@ -14,6 +14,9 @@ from .resample import resample
 from .rotate import rotate
 
 from .scatter_pts import scatter_pts, RandomSampling
+
+from .poisson_sample_in import poisson_sample_in
+
 from .scale import scale
 from .split_at import split_at
 
