@@ -28,3 +28,10 @@ def test_circle_create():
     circ = Circle([1, 2], 3.456)
     np.testing.assert_array_equal(circ.center, [1, 2])
     assert circ.r == 3.456
+
+
+def test_circle_create_in_rect():
+    rect = Rect((1, 2), size=(3, 4))
+    circ = Circle.in_rect(rect)
+    np.testing.assert_array_equal(circ.center, [2.5, 4.0])
+    assert circ.r == 1.5

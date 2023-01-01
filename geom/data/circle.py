@@ -15,6 +15,18 @@ class Circle:
     def _repr_pretty_(self, p, cycle):
         p.text(str(self) if not cycle else "...")
 
+    @classmethod
+    def in_rect(cls, rect):
+        """
+        pos: (x, y) position of center of rect
+        size: (width, height)
+        """
+        r = rect.w if rect.w < rect.h else rect.h
+        r *= 0.5
+        cent_x = rect.x + rect.w / 2.0
+        cent_y = rect.y + rect.h / 2.0
+        return cls((cent_x, cent_y), r)
+
     # === Specialized ===
     def with_center(self, center):
         return Circle(center, self.r, self.theta)
