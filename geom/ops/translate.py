@@ -18,7 +18,7 @@ def translate(dat, trans):
     """
 
     if isinstance(dat, Circle):
-        return dat.with_origin(dat.origin + trans)
+        return dat.with_center(dat.center + trans)
 
     if isinstance(dat, Rect):
         return dat.offset_by(trans)
