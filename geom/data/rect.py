@@ -40,6 +40,15 @@ class Rect(Polygon):
         return cls(origin, size)
 
     @classmethod
+    def from_bounds(cls, bounds):
+        """
+        bounds: (x, y, w, h)
+        """
+        x, y, w, h = bounds
+        origin = [x - w / 2, y - h / 2]
+        return cls(origin, (w, h))
+
+    @classmethod
     def wrapping_points(cls, pts):
         """
         given a list of points, determine a rect that contains all of them
