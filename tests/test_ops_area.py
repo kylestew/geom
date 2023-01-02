@@ -10,7 +10,7 @@ from geom.data import (
     Ellipse,
     Grid,
     Line,
-    Points,
+    Point,
     Polygon,
     Rect,
     Triangle,
@@ -50,8 +50,8 @@ def test_area_line_fails():
         area(line) == 123
 
 
-def test_area_points_fails():
-    points = Points([[0, 0]])
+def test_area_point_fails():
+    points = Point([[0, 0]])
     with pytest.raises(Exception):
         area(points) == 123
 

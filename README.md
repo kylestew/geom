@@ -14,7 +14,7 @@ GEOM is split into multiple sub-packages
 - Ellipse
 - Grid
 - Line
-- Points
+- Point
 - Polygon
 - Rect
 - Triangle

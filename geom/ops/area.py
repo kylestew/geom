@@ -7,7 +7,7 @@ from geom.data import (
     Ellipse,
     Grid,
     Line,
-    Points,
+    Point,
     Polygon,
     Rect,
     Triangle,
@@ -26,7 +26,7 @@ def area(dat):
 
     For curves, lines, point clouds and rays the function returns 0.
     """
-    throws_impossible_for(dat, [Line, Points])
+    throws_impossible_for(dat, [Line, Point])
 
     if isinstance(dat, Circle):
         return pi * dat.r * dat.r

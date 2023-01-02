@@ -3,7 +3,6 @@ import math
 
 from geom.data.rect import Rect
 from geom.data.circle import Circle
-from geom.data.points import Points
 from geom.data.line import Line
 from geom.data.grid import Grid
 from geom.data.polygon import Polygon

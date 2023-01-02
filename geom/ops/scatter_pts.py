@@ -9,7 +9,7 @@ from geom.data import (
     Ellipse,
     Grid,
     Line,
-    Points,
+    Point,
     Polygon,
     Rect,
     Triangle,
@@ -45,7 +45,7 @@ def scatter_pts(
     returns: `num` points scattered into the bounds of the `dat` geo
     note: returns no points if the shape bounds cannot be determined
     """
-    throws_impossible_for(dat, [Arc, Cubic, Grid, Line, Points])
+    throws_impossible_for(dat, [Arc, Cubic, Grid, Line, Point])
 
     bnds = bounds(dat)
     if bnds == None:
