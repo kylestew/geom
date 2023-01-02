@@ -45,8 +45,7 @@ class Rect(Polygon):
         bounds: (x, y, w, h)
         """
         x, y, w, h = bounds
-        origin = [x - w / 2, y - h / 2]
-        return cls(origin, (w, h))
+        return cls((x, y), (w, h))
 
     @classmethod
     def wrapping_points(cls, pts):
