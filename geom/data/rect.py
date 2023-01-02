@@ -15,6 +15,7 @@ class Rect(Polygon):
         self.y = y
         self.w = w
         self.h = h
+        self.pos = pos
         self.size = size
 
         # construct polygon

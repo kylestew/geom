@@ -59,6 +59,14 @@ class Grid(APC):
             )
         )
 
+    @classmethod
+    def from_rect(cls, rect, grid=[10, 10]):
+        """
+        - rect: a rect to pull size and position from
+        - grid: passed to main init
+        """
+        return cls(rect.pos, rect.size, grid)
+
     # === Specialized ===
     def centers(self):
         """
