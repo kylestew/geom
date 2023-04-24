@@ -1,6 +1,20 @@
 import numpy as np
 
-from geom.data import Rect, Circle
+from geom.data import Rect, Circle, Point
+
+
+def test_point_create():
+    point = Point([1, 2])
+    np.testing.assert_array_equal(point.pt, [1, 2])
+
+
+def test_point_create_numpy_array():
+    pt = np.array([1, 2])
+    point = Point(pt)
+    np.testing.assert_array_equal(point.pt, [1, 2])
+    x, y = point.pt
+    assert x == 1
+    assert y == 2
 
 
 def test_rect_create():

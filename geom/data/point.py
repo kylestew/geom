@@ -9,7 +9,7 @@ class Point:
 
     def __str__(self):
         x, y = self.pt
-        return "Point({0, 1})".format(x, y)
+        return "Point({0}, {1})".format(x, y)
 
     def _repr_pretty_(self, p, cycle):
         p.text(str(self) if not cycle else "...")

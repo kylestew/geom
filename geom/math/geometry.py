@@ -4,12 +4,19 @@ import numpy as np
 def angle_to_unit_vector(theta):
     return make_normal(np.append(np.cos(theta), np.sin(theta)))
 
+def vector_perpendicular_to_vector(v, clockwise=True):
+    if clockwise:
+        return norm((v[1], -v[0]))
+    else:
+        return norm((-v[1], v[0]))
 
 def cart2pol(x, y):
     rho = np.sqrt(x**2 + y**2)
     phi = np.arctan2(y, x)
     return (rho, phi)
 
+def norm(v):
+    return v / np.linalg.norm(v)
 
 def make_normal(p, orig=np.array([0, 0])):
     v = np.array(p) - orig
