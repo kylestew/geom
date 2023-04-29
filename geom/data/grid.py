@@ -90,5 +90,5 @@ class Grid(APC):
         cols = self.cols
         rows = self.rows
         return array(
-            [fn(pt, (idx % cols / (cols - 1), idx // cols / (rows - 1))) for idx, pt in enumerate(pts)]
+            [fn(pt, (idx // cols, idx % cols), (idx % cols / (cols - 1), idx // cols / (rows - 1))) for idx, pt in enumerate(pts)]
         )

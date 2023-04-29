@@ -39,17 +39,17 @@ def test_grid_map_fn():
     assert grid.cell_count == 6
     assert_array_equal(grid.cell_size, [1.0, 1.0])
 
-    vals = grid.map(lambda pt, pos: [pt[0], pt[1], pos[0], pos[1]])
+    vals = grid.map(lambda pt, pos, uv: [pt[0], pt[1], pos[0], pos[1], uv[0], uv[1]])
     assert_array_equal(
         vals,
         [
-            # x, y, u, v
-            [1.0, 2.0, 0, 0],
-            [2.0, 2.0, 0.5, 0],
-            [3.0, 2.0, 1, 0],
-            [1.0, 3.0, 0, 1],
-            [2.0, 3.0, 0.5, 1],
-            [3.0, 3.0, 1, 1],
+            # x, y, row, col, u, v
+            [1.0, 2.0, 0, 0, 0, 0],
+            [2.0, 2.0, 0, 1, 0.5, 0],
+            [3.0, 2.0, 0, 2, 1, 0],
+            [1.0, 3.0, 1, 0, 0, 1],
+            [2.0, 3.0, 1, 1, 0.5, 1],
+            [3.0, 3.0, 1, 2, 1, 1],
         ],
     )
 
