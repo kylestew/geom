@@ -35,7 +35,7 @@ def scale(dat, scale):
         if sx != sy:
             raise Exception("NON-UNIFORM SCALE NOT IMPLEMENTED")
         else:
-            return Circle(dat.origin, dat.r * sx)
+            return Circle(dat.center, dat.r * sx)
 
     elif isinstance(dat, Line):
         raise Exception("NOT IMPLEMENTED")
