@@ -3,6 +3,7 @@ from geom.data.circle import Circle
 from geom.data.line import Line
 from geom.data.polygon import Polygon
 from geom.data.triangle import Triangle
+from geom.data.point import Point
 
 from numpy import sum
 from geom.ops.point_at import point_at
@@ -15,6 +16,9 @@ def centroid(dat):
     """
     Computes centroid of given shape
     """
+    if isinstance(dat, Point):
+        return dat.pt
+
     if isinstance(dat, Rect):
         return dat.x + dat.w / 2.0, dat.y + dat.h / 2.0
 
