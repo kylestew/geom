@@ -6,6 +6,9 @@ from .bounds import bounds
 from .centroid import centroid
 from .convex_hull import convex_hull
 from .contains import contains
+
+from .distance import distance
+
 from .edges import edges
 from .point_at import point_at
 from .point_inside import point_inside
