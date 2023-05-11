@@ -13,7 +13,7 @@ def distance(dat, pt):
     """
     x1, y1 = centroid(dat)
 
-    if isinstance(dat, Point):
+    if isinstance(pt, Point):
         x2, y2 = pt.pt
     else:
         x2, y2 = pt
