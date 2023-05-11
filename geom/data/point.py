@@ -1,3 +1,5 @@
+from geom.data.point import Point
+
 class Point:
     """
     Point:
@@ -5,7 +7,10 @@ class Point:
     """
 
     def __init__(self, pt=[0, 0]):
-        self.pt = pt
+        if isinstance(pt, Point):
+            self.pt = pt.pt
+        else:
+            self.pt = pt
 
     def __str__(self):
         x, y = self.pt
