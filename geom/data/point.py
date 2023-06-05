@@ -1,5 +1,3 @@
-from geom.data.point import Point
-
 class Point:
     """
     Point:

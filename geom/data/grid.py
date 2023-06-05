@@ -83,6 +83,8 @@ class Grid(APC):
 
         - fn: (point, position) -> ()
             - point: (x, y)
+            - cell size: (w, h)
+            - index: (i, j)
             - uv: (u, v)
         """
         pts = self.centers() if from_centers == True else self.points
@@ -90,5 +92,5 @@ class Grid(APC):
         cols = self.cols
         rows = self.rows
         return array(
-            [fn(pt, (idx // cols, idx % cols), (idx % cols / (cols - 1), idx // cols / (rows - 1))) for idx, pt in enumerate(pts)]
+            [fn(pt, self.cell_size, (idx // cols, idx % cols), (idx % cols / (cols - 1), idx // cols / (rows - 1))) for idx, pt in enumerate(pts)]
         )
