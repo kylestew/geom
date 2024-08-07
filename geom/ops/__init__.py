@@ -16,7 +16,7 @@ from .resample import resample
 
 from .rotate import rotate
 
-from .scatter_pts import scatter_pts, RandomSampling
+from .scatter import scatter, RandomSampling
 
 from .poisson_sample_in import poisson_sample_in
 

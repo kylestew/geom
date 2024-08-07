@@ -29,9 +29,7 @@ class RandomSampling(Enum):
 
 
 # def gaussian_point_in(dat, sigma=0.5):
-def scatter_pts(
-    dat, num=12, seed=None, sampling=RandomSampling.RANDOM, sigma=0.5
-):
+def scatter(dat, num=12, seed=None, sampling=RandomSampling.RANDOM, sigma=0.5):
     """
     Scatters points in the bounds of a given GEO.DAT shape.
 

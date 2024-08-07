@@ -40,7 +40,7 @@ GEOM is split into multiple sub-packages
 - scale
 - translate
 
-- scatter_pts
+- scatter
 
 - resample
 - split_at
@@ -53,12 +53,3 @@ GEOM is split into multiple sub-packages
 ### MATH: `geom.math`
 
 > Mathmatical helper functions
-
-
-## Testing
-
-This repo is meant to be grown test first. New functionality should be created using tests to define the shape and usage thereof.
-
-Using `pytest`
-
-    $ pytest
