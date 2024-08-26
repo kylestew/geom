@@ -1,7 +1,7 @@
 from numpy import array
 import math
 
-from geom.data.rect import Rect
+from geom.data.rectangle import Rectangle
 from geom.data.circle import Circle
 from geom.data.line import Line
 from geom.data.grid import Grid
@@ -14,7 +14,7 @@ def bounds(dat):
 
     rect: (x, y, w, h)
     """
-    if isinstance(dat, Rect):
+    if isinstance(dat, Rectangle):
         return (dat.x, dat.y, dat.w, dat.h)
 
     if isinstance(dat, Grid):
@@ -22,7 +22,7 @@ def bounds(dat):
 
     elif isinstance(dat, Circle):
         r = dat.r
-        return bounds(Rect(dat.center - array((r, r)), (2 * dat.r, 2 * dat.r)))
+        return bounds(Rectangle(dat.center - array((r, r)), (2 * dat.r, 2 * dat.r)))
 
     else:
         pts = dat.points

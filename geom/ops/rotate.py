@@ -1,7 +1,7 @@
-#%%
+# %%
 from geom.data.polygon import Polygon
 from geom.data.line import Line
-from geom.data.rect import Rect
+from geom.data.rectangle import Rectangle
 from geom.data.circle import Circle
 
 from geom.ops.centroid import centroid
@@ -32,7 +32,7 @@ def rotate(dat, theta, center=None):
     if isinstance(dat, Circle):
         return Circle(dat.center, dat.r, dat.theta + theta)
 
-    if isinstance(dat, Rect):
+    if isinstance(dat, Rectangle):
         return Polygon(rotate_points(vertices(dat), theta))
 
     if center == None:

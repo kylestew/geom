@@ -13,12 +13,12 @@ def test_scatter_pts_random():
 
 
 def test_scatter_pts_uniform():
-    circ = dat.Rect()
+    circ = dat.Rectangle()
     pts = scatter_pts(circ, num=128, sampling=RandomSampling.UNIFORM)
     assert len(pts) == 128
 
 
 def test_scatter_pts_gaussian():
-    circ = dat.Rect()
+    circ = dat.Rectangle()
     pts = scatter_pts(circ, num=128, sampling=RandomSampling.GAUSSIAN)
     assert len(pts) == 128

@@ -1,5 +1,5 @@
 from geom.data.circle import Circle
-from geom.data.rect import Rect
+from geom.data.rectangle import Rectangle
 from geom.data.polygon import Polygon
 
 from geom.ops.vertices import vertices
@@ -20,7 +20,7 @@ def translate(dat, trans):
     if isinstance(dat, Circle):
         return dat.with_center(dat.center + trans)
 
-    if isinstance(dat, Rect):
+    if isinstance(dat, Rectangle):
         return dat.offset_by(trans)
 
     # treat all others as polys

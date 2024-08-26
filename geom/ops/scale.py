@@ -1,4 +1,4 @@
-from geom.data.rect import Rect
+from geom.data.rectangle import Rectangle
 from geom.data.circle import Circle
 from geom.data.line import Line
 from geom.data.polygon import Polygon
@@ -26,10 +26,10 @@ def scale(dat, scale):
     else:
         sx = sy = scale
 
-    if isinstance(dat, Rect):
+    if isinstance(dat, Rectangle):
         center = centroid(dat)
         scaled_size = (dat.size[0] * sx, dat.size[1] * sy)
-        return Rect.from_center(center, scaled_size)
+        return Rectangle.from_center(center, scaled_size)
 
     elif isinstance(dat, Circle):
         if sx != sy:

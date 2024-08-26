@@ -11,7 +11,7 @@ from geom.data import (
     Line,
     Point,
     Polygon,
-    Rect,
+    Rectangle,
     Triangle,
 )
 

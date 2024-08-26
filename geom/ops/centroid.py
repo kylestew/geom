@@ -1,4 +1,4 @@
-from geom.data.rect import Rect
+from geom.data.rectangle import Rectangle
 from geom.data.circle import Circle
 from geom.data.line import Line
 from geom.data.polygon import Polygon
@@ -19,7 +19,7 @@ def centroid(dat):
     if isinstance(dat, Point):
         return dat.pt
 
-    if isinstance(dat, Rect):
+    if isinstance(dat, Rectangle):
         return dat.x + dat.w / 2.0, dat.y + dat.h / 2.0
 
     elif isinstance(dat, Circle):

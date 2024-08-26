@@ -7,5 +7,7 @@ from .line import Line
 from .point import Point
 from .polygon import Polygon
 from .polyline import Polyline
-from .rect import Rect
+from .rectangle import Rectangle
 from .triangle import Triangle
+
+from .cube import Cube

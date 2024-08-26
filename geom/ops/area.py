@@ -9,7 +9,7 @@ from geom.data import (
     Line,
     Point,
     Polygon,
-    Rect,
+    Rectangle,
     Triangle,
 )
 
@@ -31,7 +31,7 @@ def area(dat):
     if isinstance(dat, Circle):
         return pi * dat.r * dat.r
 
-    elif isinstance(dat, Rect):
+    elif isinstance(dat, Rectangle):
         return dat.w * dat.h
 
     else:

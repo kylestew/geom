@@ -1,4 +1,4 @@
-from geom.data.rect import Rect
+from geom.data.rectangle import Rectangle
 from geom.data.circle import Circle
 from geom.data.polygon import Polygon
 
@@ -26,7 +26,7 @@ def point_inside(dat, pt):
     """
     Determines if a given point is within the shape
     """
-    if isinstance(dat, Rect) or isinstance(dat, Polygon):
+    if isinstance(dat, Rectangle) or isinstance(dat, Polygon):
         return _point_inside(vertices(dat), pt)
 
     elif isinstance(dat, Circle):

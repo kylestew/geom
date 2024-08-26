@@ -1,4 +1,4 @@
-from geom.data.rect import Rect
+from geom.data.rectangle import Rectangle
 from geom.data.circle import Circle
 from numpy import array, linspace, column_stack, cos, sin
 from math import pi
@@ -7,7 +7,7 @@ DEFAULT_SAMPLES = 32
 
 
 def vertices(dat, n=DEFAULT_SAMPLES):
-    if isinstance(dat, Rect):
+    if isinstance(dat, Rectangle):
         p = (dat.x, dat.y)
         q = (p[0] + dat.w, p[1] + dat.h)
         return array([p, (q[0], p[1]), q, (p[0], q[1])])

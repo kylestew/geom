@@ -1,8 +1,9 @@
 """
 TODO: move this into geom some day
 """
+
 import numpy as np
-from geom.data.rect import Rect
+from geom.data.rectangle import Rectangle
 from geom.data.polygon import Polygon
 from geom.data.triangle import Triangle
 from geom.data.line import Line
@@ -58,7 +59,7 @@ def tri_split_mixed(tri):
     )
 
 
-def rect_split(rect: Rect, t: float, horiz=True):
+def rect_split(rect: Rectangle, t: float, horiz=True):
     """Splits a rect horizontally or vertically at t
 
     Args:
@@ -75,10 +76,8 @@ def rect_split(rect: Rect, t: float, horiz=True):
         # horiz
         return np.array(
             [
-                Rect(pos, (size[0] * t, size[1])),
-                Rect(
-                    (pos[0] + size[0] * t, pos[1]), (size[0] * (1 - t), size[1])
-                ),
+                Rectangle(pos, (size[0] * t, size[1])),
+                Rectangle((pos[0] + size[0] * t, pos[1]), (size[0] * (1 - t), size[1])),
             ]
         )
     else:
@@ -86,10 +85,8 @@ def rect_split(rect: Rect, t: float, horiz=True):
         t = 1 - t
         return np.array(
             [
-                Rect(pos, (size[0], size[1] * t)),
-                Rect(
-                    (pos[0], pos[1] + size[1] * t), (size[0], size[1] * (1 - t))
-                ),
+                Rectangle(pos, (size[0], size[1] * t)),
+                Rectangle((pos[0], pos[1] + size[1] * t), (size[0], size[1] * (1 - t))),
             ]
         )
 
@@ -99,7 +96,7 @@ def rect_to_quad_rects(poly, pct=[0.5, 0.5]):
     Subdivide a rectangle into 4 sections
     pct - center point to split on, (0.5, 0.5) is 4 equal rects from one
     """
-    rect = Rect.wrapping_points(vertices(poly))
+    rect = Rectangle.wrapping_points(vertices(poly))
 
     a, b, c, d = vertices(rect)
     px, py = pct
@@ -110,10 +107,10 @@ def rect_to_quad_rects(poly, pct=[0.5, 0.5]):
     da = point_at(Line(d, a), 1.0 - py)
 
     return [
-        Rect.wrapping_points((a, ab, da)),
-        Rect.wrapping_points((ab, b, bc)),
-        Rect.wrapping_points((bc, c, cd)),
-        Rect.wrapping_points((cd, d, da)),
+        Rectangle.wrapping_points((a, ab, da)),
+        Rectangle.wrapping_points((ab, b, bc)),
+        Rectangle.wrapping_points((bc, c, cd)),
+        Rectangle.wrapping_points((cd, d, da)),
     ]
 
 
