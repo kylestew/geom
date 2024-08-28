@@ -12,3 +12,4 @@ from .triangle import Triangle
 
 from .cube import Cube
 from .sphere import Sphere
+from .cube_grid import CubeGrid

@@ -5,6 +5,9 @@ from geom.data.polygon import Polygon
 from geom.data.triangle import Triangle
 from geom.data.point import Point
 
+from geom.data.cube import Cube
+from geom.data.sphere import Sphere
+
 from numpy import sum
 from geom.ops.point_at import point_at
 from geom.ops.vertices import vertices
@@ -28,8 +31,11 @@ def centroid(dat):
     elif isinstance(dat, Line):
         return point_at(dat, 0.5)
 
-    elif isinstance(dat, Polygon) or isinstance(dat, Triangle):
-        return SPoly(vertices(dat)).centroid.coords[0]
+    elif isinstance(dat, Cube):
+        return dat.center
+
+    if isinstance(dat, Sphere):
+        return dat.pos
 
     else:
         """
