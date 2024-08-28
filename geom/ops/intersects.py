@@ -1,21 +1,20 @@
 from geom.data.line import Line
 from geom.data.circle import Circle
+from geom.data.sphere import Sphere
 
 from geom.ops.vertices import vertices
 
 from shapely.geometry import LineString
 from shapely.geometry import Polygon
 
+from math import dist
+
 
 def intersects(dat, other):
-    """
-    Checks if given object intersects with another object
-    (can only do two lines right now)
-    """
-    if isinstance(dat, Circle) and isinstance(other, Circle):
-        # simple circle-circle intersection
-        from math import dist
-
+    if (isinstance(dat, Circle) and isinstance(other, Circle)) or (
+        isinstance(dat, Sphere) and isinstance(other, Sphere)
+    ):
+        # simple circle-circle or sphere-sphere intersection
         p1 = dat.center
         r1 = dat.r
         p2 = other.center

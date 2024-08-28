@@ -11,3 +11,4 @@ from .rectangle import Rectangle
 from .triangle import Triangle
 
 from .cube import Cube
+from .sphere import Sphere

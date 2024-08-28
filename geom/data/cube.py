@@ -47,7 +47,7 @@ class Cube:
             self.pos[2] + self.size[2] / 2,
         ]
 
-    @staticmethod
-    def with_rectangle(rect: Rectangle, depth: float):
+    @classmethod
+    def with_rectangle(cls, rect: Rectangle, depth: float):
         pos = rect.center
-        return Cube([pos[0], pos[1], 0], [rect.size[0], rect.size[1], depth])
+        return cls([pos[0], pos[1], 0], [rect.size[0], rect.size[1], depth])
