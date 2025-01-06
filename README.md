@@ -11,14 +11,17 @@ GEOM is split into multiple sub-packages
 - Arc
 - Circle
 - Cubic
+- Cube
+- CubeGrid
 - Ellipse
 - Grid
 - Line
 - Point
 - Polygon
+- Polyline
 - Rect
+- Sphere
 - Triangle
-
 
 ### OPS: `geom.ops`
 
@@ -30,26 +33,47 @@ GEOM is split into multiple sub-packages
 - area
 - bounds
 - centroid
-
 - contains
+- convex_hull
+- distance
+- edges
+- intersects
 - point_at
 - point_inside
-- intersects
-
+- resample
 - rotate
 - scale
-- translate
-
 - scatter
-
-- resample
 - split_at
-- triangulate ???
-
-- convex_hull ???
-- edges ???
-
+- translate
+- triangulate
 
 ### MATH: `geom.math`
 
-> Mathmatical helper functions
+> Mathematical helper functions
+
+- angle_to_unit_vector
+- cart2pol
+- fit01/fit10/fit11
+- lerp
+- make_normal
+- norm
+- remap
+- rotate_point
+- vector_perpendicular_to_vector
+
+## Quick Start
+
+```python
+from geom.data import Circle, Point
+from geom.ops import area, contains
+
+# Create a circle
+circle = Circle(Point(0, 0), radius=5)
+
+# Calculate its area
+circle_area = area(circle)
+
+# Check if a point is inside
+is_inside = contains(circle, Point(3, 3))
+```
