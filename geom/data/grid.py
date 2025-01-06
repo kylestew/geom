@@ -47,8 +47,7 @@ class Grid(APC):
 
     def __str__(self):
         return (
-            "Grid(({0}, {1}), ({2}, {3}, rows: {4}, cols: {5}, cell_size: {6}))"
-            .format(
+            "Grid(({0}, {1}), ({2}, {3}, rows: {4}, cols: {5}, cell_size: {6}))".format(
                 self._x,
                 self._y,
                 self._w,
@@ -81,16 +80,28 @@ class Grid(APC):
         Execute a function for each point in the grid and return
         the results as an array.
 
-        - fn: (point, position) -> ()
-            - point: (x, y)
-            - cell size: (w, h)
-            - index: (i, j)
-            - uv: (u, v)
+        Args:
+            fn: Function that takes the following arguments and returns any value:
+                - point: (x,y) coordinates of the grid point
+                - cell_size: (width, height) of each grid cell
+                - index: (row, col) indices of the point in the grid
+                - uv: (u,v) normalized coordinates from 0-1 across the grid
+
+        Returns:
+            Array of values returned by fn for each point
         """
         pts = self.centers() if from_centers == True else self.points
 
         cols = self.cols
         rows = self.rows
         return array(
-            [fn(pt, self.cell_size, (idx // cols, idx % cols), (idx % cols / (cols - 1), idx // cols / (rows - 1))) for idx, pt in enumerate(pts)]
+            [
+                fn(
+                    pt,
+                    self.cell_size,
+                    (idx // cols, idx % cols),
+                    (idx % cols / (cols - 1), idx // cols / (rows - 1)),
+                )
+                for idx, pt in enumerate(pts)
+            ]
         )
