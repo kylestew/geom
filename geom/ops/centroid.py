@@ -4,6 +4,7 @@ from geom.data.line import Line
 from geom.data.polygon import Polygon
 from geom.data.triangle import Triangle
 from geom.data.point import Point
+from geom.data.grid import Grid
 
 from geom.data.cube import Cube
 from geom.data.sphere import Sphere
@@ -24,6 +25,9 @@ def centroid(dat):
 
     if isinstance(dat, Rectangle):
         return dat.x + dat.w / 2.0, dat.y + dat.h / 2.0
+
+    if isinstance(dat, Grid):
+        return dat._x + dat._w / 2.0, dat._y + dat._h / 2.0
 
     elif isinstance(dat, Circle):
         return dat.center
