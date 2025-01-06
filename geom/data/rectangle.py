@@ -25,13 +25,12 @@ class Rectangle(Polygon):
         self.h = h
         self.pos = pos
         self.size = size
-        self.attribs = attribs if attribs is not None else {}
 
         # construct polygon
         p = (self.x, self.y)
         q = self.max
         verts = array([p, (q[0], p[1]), q, (p[0], q[1])])
-        super().__init__(verts)
+        super().__init__(verts, attribs)
 
     def __str__(self):
         return "Rectangle(({0}, {1}), ({2}, {3}))".format(

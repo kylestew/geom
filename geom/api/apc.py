@@ -2,11 +2,13 @@ import numpy as np
 
 
 class APC:
-    def __init__(self, pts):
+    def __init__(self, pts, attribs=None):
         if type(pts).__module__ == np.__name__:
             self.points = pts
         else:
             self.points = np.array(pts)
+
+        self.attribs = attribs
 
         assert self.points.ndim == 2, "Must be a 2d array"
         assert self.points.shape[1] == 2, "Array must contain [x, y] pairs"

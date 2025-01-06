@@ -6,8 +6,8 @@ from geom.data.line import Line
 
 
 class Polygon(APC):
-    def __init__(self, pts):
-        super().__init__(pts)
+    def __init__(self, pts, attribs=None):
+        super().__init__(pts, attribs)
 
     def __str__(self):
         return "Polygon({0})".format(self.points)

@@ -2,10 +2,11 @@ from numpy import array
 
 
 class Circle:
-    def __init__(self, center=[0, 0], r=1, theta=0):
+    def __init__(self, center=[0, 0], r=1, theta=0, attribs=None):
         self.center = array(center)
         self.r = r
         self.theta = theta
+        self.attribs = attribs
 
     def __str__(self):
         return "Circle(({0}, {1}), r = {2})".format(

@@ -5,12 +5,13 @@ from numpy.linalg import norm
 
 
 class Line(APC):
-    def __init__(self, a=[0, 0], b=[1, 0]):
+    def __init__(self, a=[0, 0], b=[1, 0], attribs=None):
         """
         a: (x, y) start of line
         b: (x, y) end of line
         """
-        super().__init__([a, b])
+        self.attribs = attribs
+        super().__init__([a, b], attribs)
 
     def __str__(self):
         return "Line({0}, {1})".format(self.points[0], self.points[1])
