@@ -12,7 +12,7 @@ from geom.data import (
     Line,
     Point,
     Polygon,
-    Rect,
+    Rectangle,
     Triangle,
 )
 from geom.ops import area
@@ -57,12 +57,12 @@ def test_area_point_fails():
 
 
 def test_area_polygon():
-    poly = Polygon(Rect(size=[2, 3]).points)
+    poly = Polygon(Rectangle(size=[2, 3]).points)
     assert area(poly) == 6
 
 
 def test_area_rect():
-    rect = Rect((1, 2), size=(3, 4))
+    rect = Rectangle((1, 2), size=(3, 4))
     assert area(rect) == 12
 
 

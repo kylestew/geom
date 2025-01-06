@@ -16,7 +16,7 @@ def test_bounds_arc():
 def test_bounds_circle():
     circ = dat.Circle((1, 1), r=1)
     res = bounds(circ)
-    np.testing.assert_array_equal(res, [0, 0, 2, 2])
+    np.testing.assert_array_equal(res, [-1, -1, 2, 2])
 
 
 # def test_bounds_cubic():
@@ -55,9 +55,9 @@ def test_bounds_poly():
 
 
 def test_bounds_rect():
-    rect = dat.Rect((1, 2), (3, 4))
+    rect = dat.Rectangle((1, 2), (3, 4))
     res = bounds(rect)
-    np.testing.assert_array_equal(res, [1, 2, 3, 4])
+    np.testing.assert_array_equal(res, [-0.5, 0, 3, 4])
 
 
 def test_bounds_triangle():

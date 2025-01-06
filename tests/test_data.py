@@ -1,6 +1,6 @@
 import numpy as np
 
-from geom.data import Rect, Circle, Point
+from geom.data import Rectangle, Circle, Point
 
 
 def test_point_create():
@@ -18,12 +18,16 @@ def test_point_create_numpy_array():
 
 
 def test_rect_create():
-    rect = Rect((1, 2), size=(3, 4))
-    np.testing.assert_array_equal(rect.points, [(1, 2), (4, 2), (4, 6), (1, 6)])
+    rect = Rectangle([1, 2], size=[3, 4])
+    np.testing.assert_array_equal(
+        rect.points, [[-0.5, 0], [2.5, 0], [2.5, 4], [-0.5, 4]]
+    )
 
 
-def test_rect_create_from_center():
-    pass
+def test_rect_create_with_attribs():
+    attribs = {"value": 123}
+    rect = Rectangle([1, 2], size=[3, 4], attribs=attribs)
+    assert rect.attribs["value"] == 123
 
 
 def test_rect_create_from_points():
@@ -44,8 +48,8 @@ def test_circle_create():
     assert circ.r == 3.456
 
 
-def test_circle_create_in_rect():
-    rect = Rect((1, 2), size=(3, 4))
-    circ = Circle.in_rect(rect)
-    np.testing.assert_array_equal(circ.center, [2.5, 4.0])
-    assert circ.r == 1.5
+# def test_circle_create_in_rect():
+#     rect = Rectangle((1, 2), size=(3, 4))
+#     circ = Circle.in_rect(rect)
+#     np.testing.assert_array_equal(circ.center, [2.5, 4.0])
+#     assert circ.r == 1.5

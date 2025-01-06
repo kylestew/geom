@@ -44,5 +44,5 @@ def centroid(dat):
         pts = vertices(dat)
         length = pts.shape[0]
         sum_x = sum(pts[:, 0])
-        sum_y = sum(pts[:, 0])
+        sum_y = sum(pts[:, 1])  # This was wrong - was using column 0 twice
         return (sum_x / length, sum_y / length)

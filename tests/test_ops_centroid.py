@@ -12,8 +12,8 @@ def test_centroid_circle():
 
 
 def test_centroid_rect():
-    rect = dat.Rect([1, 2], [2, 3])
-    assert_array_equal(centroid(rect), [2, 3.5])
+    rect = dat.Rectangle([1, 2], [2, 3])
+    assert_array_equal(centroid(rect), [1, 2])
 
 
 def test_centroid_poly():

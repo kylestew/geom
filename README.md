@@ -29,7 +29,6 @@ GEOM is split into multiple sub-packages
 
 - vertices
 - as_polygon
-
 - area
 - bounds
 - centroid
@@ -76,4 +75,10 @@ circle_area = area(circle)
 
 # Check if a point is inside
 is_inside = contains(circle, Point(3, 3))
+```
+
+## Developing
+
+```bash
+pip install -e .
 ```

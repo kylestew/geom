@@ -1,15 +1,14 @@
-# %%
 from typing import List
 from .polygon import Polygon
-
 from numpy import array, hsplit
 
 
 class Rectangle(Polygon):
-    def __init__(self, center=[0, 0], size=[1, 1]):
+    def __init__(self, center=[0, 0], size=[1, 1], attribs=None):
         """
         center: (x, y) origin position
         size: (width, height)
+        attribs: optional dictionary of attributes
         """
         if len(center) != 2:
             raise ValueError("Position list must have exactly two elements.")
@@ -26,6 +25,7 @@ class Rectangle(Polygon):
         self.h = h
         self.pos = pos
         self.size = size
+        self.attribs = attribs if attribs is not None else {}
 
         # construct polygon
         p = (self.x, self.y)
