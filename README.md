@@ -82,3 +82,10 @@ is_inside = contains(circle, Point(3, 3))
 ```bash
 pip install -e .
 ```
+
+## Testing
+
+```bash
+# Run tests with pytest
+pytest
+```
